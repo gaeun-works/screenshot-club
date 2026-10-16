@@ -1,7 +1,8 @@
 /**
  * 마케터 스크린샷 털이 클럽 · 오픈 알림 신청 → Google Sheets 저장
  *
- * ▼ 아래 2개 값만 채우세요.
+ * 시트에서 [확장 프로그램 → Apps Script]로 열었다면 SPREADSHEET_ID는 비워둬도 돼요.
+ * (그 시트에 자동으로 저장돼요. 다른 시트에 저장할 때만 ID를 넣으세요.)
  *   SPREADSHEET_ID: 시트 URL의 /d/ 와 /edit 사이 문자열
  *                   https://docs.google.com/spreadsheets/d/【여기】/edit
  *   SHEET_NAME:     저장할 탭 이름 (없으면 자동으로 만들어요)
@@ -88,7 +89,8 @@ function setupSheet() {
 }
 
 function getSheet_() {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const useId = SPREADSHEET_ID && SPREADSHEET_ID !== 'PASTE_SPREADSHEET_ID_HERE';
+  const ss = useId ? SpreadsheetApp.openById(SPREADSHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
   if (sheet.getLastRow() === 0) {
