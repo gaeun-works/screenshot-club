@@ -7,7 +7,7 @@
 const SITE_CONFIG = {
   GA4_MEASUREMENT_ID: 'G-MVTMSNH1ET',
   META_PIXEL_ID: '',             // 예: '123456789012345'
-  APPS_SCRIPT_WEB_APP_URL: '',   // 예: 'https://script.google.com/macros/s/XXXX/exec'
+  APPS_SCRIPT_WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbxXWFmSmYqAYxNUwo8tCJ1znIiyptklJbLGxfVfV20oEC2GVUD2f0ekAFXMBWrBmfiO/exec',
   DEBUG: false,                  // true면 이벤트 이름·파라미터를 console에 표시 (개인정보는 절대 포함되지 않음)
 };
 
