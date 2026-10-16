@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마케터 스크린샷 털이 클럽 · 오픈 알림 신청</title>
+<meta name="description" content="한 달 묵힌 스크린샷 3장을 해체해 내 카피로 바꾸고, 다른 마케터의 스크린샷까지 털어봅시다. 7일 오픈채팅 카피 분석 모임, 1기 오픈 알림 신청 중.">
+<meta property="og:title" content="마케터 스크린샷 털이 클럽 · 오픈 알림 신청">
+<meta property="og:description" content="좋은 카피 보면 일단 캡처! 그런데… 다시 꺼내본 적은 있나요?">
+<script src="site.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  /* Figma 'Color' variables */
+  :root {
+    --brand-yellow: #F6C348;
+    --brand-yellow-soft: #FBE3A0;
+    --brand-yellow-deep: #C98A0A;
+    --bg-cream: #FDF4E8;
+    --bg-white: #FFFFFF;
+    --bg-ink: #2A2118;
+    --bg-placeholder: #F1E6D3;
+    --text-primary: #2A2118;
+    --text-secondary: #6E6253;
+    --text-inverse: #FFFFFF;
+    --line-default: #EADFCB;
+    --line-placeholder: #CDBB9B;
+    --status-red: #CA3D25;
+    --status-red-soft: #FFE9E6;
+    --status-red-light: #FFAD9A;
+
+    --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    --font-hand: 'Nanum Pen Script', cursive;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background: #EFE5D6;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .page { max-width: 480px; margin: 0 auto; background: var(--bg-cream); overflow: hidden; }
+
+  section { padding: 64px 20px; display: flex; flex-direction: column; gap: 20px; }
+  .bg-cream { background: var(--bg-cream); }
+  .bg-white { background: var(--bg-white); }
+  .bg-yellow { background: var(--brand-yellow); }
+  .bg-hero { background: linear-gradient(180deg, #FDF4E8 0%, #FFDDB9 100%); }
+  .bg-orange { background: linear-gradient(180deg, #FFD771 0%, #FEA81D 100%); }
+  .bg-ink { background: var(--bg-ink); }
+  .center { align-items: center; text-align: center; }
+
+  /* Section titles in handwriting */
+  h2 { font-family: var(--font-hand); font-size: 38px; font-weight: 400; line-height: 1.15; letter-spacing: 0; }
+
+  /* Chip/Label */
+  .chip {
+    align-self: flex-start;
+    display: inline-flex; padding: 6px 12px; border-radius: 999px;
+    background: var(--bg-ink); color: var(--brand-yellow);
+    font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: 0;
+  }
+  .chip.light { color: var(--text-inverse); }
+  .center .chip { align-self: center; }
+
+  /* Button/Primary, Button/Outline */
+  .btn {
+    display: flex; justify-content: center; align-items: center;
+    width: 100%; padding: 18px 24px; border-radius: 14px;
+    background: var(--brand-yellow); color: var(--text-primary);
+    font-size: 17px; font-weight: 700; line-height: 1.5;
+    transition: transform .1s ease, filter .15s ease;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn:hover { filter: brightness(0.97); }
+  .btn.dark { background: var(--bg-ink); color: var(--text-inverse); }
+  .btn-outline {
+    align-self: flex-start; display: inline-flex; padding: 14px 20px; border-radius: 12px;
+    border: 1.5px solid var(--text-primary); font-size: 14px; font-weight: 700;
+  }
+
+  /* Photo Placeholder */
+  .photo {
+    height: var(--h, 220px); width: 100%;
+    border-radius: 16px; background: var(--bg-placeholder);
+    border: 1.5px dashed var(--line-placeholder);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+    text-align: center; overflow: hidden;
+  }
+  .photo::before {
+    content: ''; width: 32px; height: 32px; margin-bottom: 4px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Crect x='3' y='4' width='18' height='16' rx='3' stroke='%23B5A07C' stroke-width='1.6'/%3E%3Ccircle cx='9' cy='10' r='1.8' fill='%23B5A07C'/%3E%3Cpath d='M4 17l5-4.5 4 3.5 3-2.5 4 3.5' stroke='%23B5A07C' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .photo:has(img, video)::before { display: none; }
+  .photo strong { font-size: 13px; font-weight: 700; color: var(--text-secondary); line-height: 1.4; padding: 0 16px; }
+  .photo span { font-size: 11px; color: var(--text-secondary); }
+  .photo img, .photo video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .photo:has(img, video) { border: 0; }
+
+  /* 00 Program Info */
+  .program { background: var(--bg-white); padding: 0 0 32px; gap: 0; }
+  .program .thumb { height: auto; aspect-ratio: 16 / 10; border-radius: 0; border-width: 0 0 1.5px; }
+  .program .body { padding: 24px 20px 0; display: flex; flex-direction: column; gap: 12px; }
+  .badges { display: flex; align-items: center; gap: 6px; }
+  .badge { display: inline-flex; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: 0.02em; }
+  .badge.red { background: var(--status-red); color: var(--text-inverse); }
+  .badge.line { border: 1px solid var(--line-default); color: var(--text-secondary); font-weight: 700; }
+  .crumb { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+  .crumb span { margin: 0 6px; color: var(--line-placeholder); }
+  .program h1 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -0.03em; }
+  .program .sub { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+  .program .sub b { display: block; color: var(--text-primary); font-weight: 700; }
+  .host-line { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; }
+  .host-line small { font-size: 13px; font-weight: 400; color: var(--text-secondary); }
+  .gains { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 14px; background: var(--bg-cream); }
+  .gains li { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; line-height: 1.45; }
+  .gains b { flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--brand-yellow); display: grid; place-items: center; font-size: 11px; font-weight: 700; }
+
+  .buy { margin: 24px 20px 0; border: 1px solid var(--line-default); border-radius: 16px; overflow: hidden; }
+  .buy .banner { background: var(--status-red); color: var(--text-inverse); text-align: center; font-size: 14px; font-weight: 700; padding: 9px; }
+  .buy .inner { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .buy .label { font-size: 13px; color: var(--text-secondary); }
+  .buy .now { font-size: 30px; font-weight: 700; line-height: 1.2; letter-spacing: -0.03em; }
+  .buy .refund { margin-top: -4px; padding: 10px 12px; border-radius: 10px; background: var(--bg-cream); font-size: 14px; line-height: 1.5; color: var(--text-secondary); }
+  .buy .refund b { color: var(--text-primary); }
+  .buy .assure { text-align: center; font-size: 13px; font-weight: 700; color: var(--brand-yellow-deep); }
+  .buy dl { border-top: 1px solid var(--line-default); padding: 16px 20px 18px; display: grid; grid-template-columns: 76px 1fr; row-gap: 10px; column-gap: 12px; font-size: 14px; line-height: 1.5; }
+  .buy dt { color: var(--text-secondary); }
+  .buy dd { font-weight: 500; }
+
+  /* 01 Hero */
+  .hero { padding: 40px 20px 48px; gap: 20px; }
+  .headline { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+  .headline .eyebrow { font-family: var(--font-hand); font-size: 26px; line-height: 1.2; color: var(--text-secondary); }
+  .headline .hook { font-family: var(--font-hand); font-size: 36px; line-height: 1.15; color: var(--text-secondary); }
+  .mark { position: relative; display: inline-block; padding: 0 8px; isolation: isolate; }
+  .mark .underline { position: absolute; left: -6px; top: -6px; width: calc(100% + 18px); height: calc(100% + 12px); z-index: -1; pointer-events: none; }
+  .doodle { position: absolute; pointer-events: none; }
+  .doodle.camera { width: 32px; height: 23px; left: -46px; top: 0; transform: rotate(-7deg); }
+  .doodle.sparkles { width: 40px; height: 28px; left: calc(100% + 6px); top: -5px; }
+  .question { padding-top: 20px; line-height: 1.35; letter-spacing: -0.03em; }
+  .question small { display: block; font-size: 20px; font-weight: 500; }
+  .question b { display: block; font-size: 27px; font-weight: 700; }
+  .arrow { text-align: center; font-size: 24px; font-weight: 700; line-height: 1; color: var(--brand-yellow-deep); }
+  .hero-sub { text-align: center; font-size: 16.5px; font-weight: 500; line-height: 1.55; letter-spacing: -0.04em; }
+  .hero-sub b { font-weight: 700; }
+  .caption { text-align: center; font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-top: -8px; }
+
+  /* 02 Host Problem */
+  .lead { font-size: 22px; font-weight: 700; line-height: 1.45; letter-spacing: -0.02em; }
+  .muted { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+  .list-card { border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .list-card.pain { background: var(--status-red-soft); }
+  .list-card.check { background: var(--bg-white); padding: 22px; gap: 16px; }
+  .list-card.check.on-white { background: var(--bg-cream); }
+  .item { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; line-height: 1.5; }
+  .item i { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; }
+  .item.cross i { background: var(--status-red-light); }
+  .item.cross svg path { stroke: var(--status-red); }
+  .item.ok i { background: var(--brand-yellow); }
+
+  /* 03 What */
+  .what { gap: 16px; }
+  .what .kicker { font-family: var(--font-hand); font-size: 26px; line-height: 1.2; }
+  .what .name { font-family: var(--font-body); font-size: 32px; font-weight: 700; line-height: 1.25; letter-spacing: -0.03em; }
+  .what p { font-size: 16px; font-weight: 500; line-height: 1.6; }
+
+  /* 04 Benefits */
+  .benefits { gap: 16px; }
+  .benefit { background: var(--bg-white); border-radius: 20px; padding: 24px 20px; display: flex; flex-direction: column; gap: 12px; }
+  .benefit .num { font-size: 12px; font-weight: 700; color: var(--brand-yellow-deep); letter-spacing: 0.04em; line-height: 1.4; }
+  .benefit h3 { font-size: 20px; font-weight: 700; line-height: 1.35; letter-spacing: -0.02em; }
+  .benefit p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+
+  .benefit p + p { margin-top: -4px; }
+
+  /* Secondary deliverable inside BENEFIT 2 */
+  .extra { background: var(--bg-cream); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+  .extra-label { font-size: 12px; font-weight: 700; color: var(--brand-yellow-deep); }
+  .benefit .extra p { font-size: 14px; line-height: 1.55; }
+
+  /* BENEFIT 3: the headline benefit */
+  .benefit.feature { background: var(--bg-ink); padding: 32px 22px 24px; gap: 14px; margin-top: 8px; }
+  .benefit.feature .num { color: var(--brand-yellow); }
+  .benefit.feature h3 { color: var(--text-inverse); font-size: 24px; line-height: 1.35; }
+  .benefit.feature .kit { align-self: flex-start; padding: 6px 12px; border-radius: 8px; background: var(--brand-yellow); color: var(--text-primary); font-size: 14px; font-weight: 700; line-height: 1.4; }
+  .benefit.feature .lead-in { font-size: 16px; font-weight: 700; color: var(--text-inverse); line-height: 1.5; margin-top: 4px; }
+  .benefit.feature > p:not(.lead-in):not(.fine) { font-size: 15px; color: rgba(255, 255, 255, 0.72); line-height: 1.6; }
+  .kit-steps { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 2px; padding: 16px; border-radius: 14px; background: rgba(255, 255, 255, 0.06); }
+  .kit-steps li { display: flex; gap: 10px; font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.8); }
+  .kit-steps b { flex: none; font-weight: 700; color: var(--brand-yellow); }
+  .benefit.feature .fine { font-size: 12px; color: rgba(255, 255, 255, 0.55); line-height: 1.5; margin-top: -4px; }
+
+  /* BENEFIT 3 device visual: phone sends → laptop archive */
+  .devices { position: relative; padding: 10px 0 14px; }
+  .laptop { width: 84%; }
+  .laptop .lid { background: #15110D; border-radius: 10px 10px 0 0; padding: 6px 6px 7px; border: 1px solid rgba(255, 255, 255, 0.12); border-bottom: 0; }
+  .laptop .lid img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: left top; border-radius: 3px; background: #fff; }
+  .laptop .base { height: 9px; margin: 0 -7%; background: linear-gradient(#D9CFBF, #B9AE9C); border-radius: 0 0 10px 10px; }
+  .phone { position: absolute; right: 0; bottom: 0; width: 96px; aspect-ratio: 9 / 18.5; padding: 5px; background: #15110D; border-radius: 18px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); }
+  .phone .screen { height: 100%; border-radius: 13px; background: var(--bg-cream); padding: 9px 6px; display: flex; flex-direction: column; gap: 5px; overflow: hidden; }
+  .phone .app-bar { font-size: 8px; font-weight: 700; color: var(--text-secondary); text-align: center; padding-bottom: 3px; border-bottom: 1px solid var(--line-default); }
+  .phone .shot { align-self: flex-end; width: 50px; aspect-ratio: 4 / 5; border-radius: 6px; background: url("몽환적인%20소셜%20미디어%20카드%20콜라주.png") 30% 40% / 260% no-repeat; }
+  .phone .bubble { font-size: 8px; line-height: 1.35; padding: 4px 6px; max-width: 92%; }
+  .phone .me { align-self: flex-end; background: var(--brand-yellow); color: var(--text-primary); font-weight: 700; border-radius: 8px 8px 2px 8px; }
+  .phone .ai { align-self: flex-start; background: var(--bg-white); color: var(--text-secondary); border-radius: 8px 8px 8px 2px; }
+  .devices .hop { position: absolute; right: 102px; top: 2px; width: 40px; }
+  .dev-caption { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: -2px; }
+  .dev-caption p { padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); font-size: 13px; line-height: 1.45; color: rgba(255, 255, 255, 0.72); }
+  .dev-caption b { display: block; color: var(--brand-yellow); font-weight: 700; }
+
+  /* 05 Roadmap */
+  .roadmap { list-style: none; display: flex; flex-direction: column; padding-top: 8px; }
+  .roadmap li { display: grid; grid-template-columns: 60px 1fr; column-gap: 14px; }
+  .roadmap .date { text-align: right; padding-top: 1px; font-size: 14px; font-weight: 700; line-height: 1.3; white-space: nowrap; }
+  .roadmap .date small { display: block; font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+  .roadmap .stop { position: relative; padding: 0 0 26px 20px; border-left: 2px solid var(--line-default); }
+  .roadmap li:last-child .stop { border-left-color: transparent; padding-bottom: 0; }
+  .roadmap .stop::before { content: ''; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-white); border: 2px solid var(--text-secondary); }
+  .roadmap .tag { display: inline-block; margin-bottom: 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--text-secondary); }
+  .roadmap h3 { font-size: 16px; font-weight: 700; line-height: 1.4; }
+  .roadmap p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin-top: 4px; }
+  .roadmap .mission .stop::before { background: var(--brand-yellow); border-color: var(--bg-ink); }
+  .roadmap .mission .tag { color: var(--brand-yellow-deep); }
+  .roadmap .mission .box { background: var(--bg-cream); border-radius: 14px; padding: 14px 16px; margin-top: -2px; }
+  .roadmap .mission .date { color: var(--brand-yellow-deep); }
+
+  /* 06 How To Apply */
+  .bg-soft { background: var(--brand-yellow-soft); }
+  .flow { list-style: none; display: flex; flex-direction: column; gap: 22px; padding-top: 4px; }
+  .flow li { position: relative; display: flex; gap: 14px; align-items: flex-start; background: var(--bg-white); border-radius: 16px; padding: 18px; }
+  .flow li + li::before { content: '↓'; position: absolute; top: -21px; left: 50%; transform: translateX(-50%); font-size: 16px; font-weight: 700; color: var(--brand-yellow-deep); line-height: 1; }
+  .flow .n { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--bg-ink); color: var(--brand-yellow); display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+  .flow h3 { font-size: 16px; font-weight: 700; line-height: 1.4; padding-top: 2px; }
+  .flow p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin-top: 4px; }
+  .note { background: var(--bg-cream); border-radius: 12px; padding: 16px; font-size: 14px; font-weight: 500; line-height: 1.6; }
+
+  /* 07 Host */
+  .profile { display: flex; align-items: center; gap: 16px; }
+  .profile .photo { width: 88px; height: 88px; border-radius: 50%; flex: none; gap: 2px; }
+  .profile .photo strong { padding: 0; }
+  .profile h3 { font-size: 20px; font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; }
+  .profile p { font-size: 14px; color: var(--text-secondary); line-height: 1.4; }
+  .bio { font-size: 15px; line-height: 1.65; }
+
+  /* 08 Info & Price */
+  .info-card { background: var(--bg-white); border-radius: 20px; padding: 20px; }
+  .info-card dl > div { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line-default); }
+  .info-card dt { flex: none; width: 76px; font-size: 14px; font-weight: 500; color: var(--text-secondary); line-height: 1.5; }
+  .info-card dd { font-size: 15px; font-weight: 700; line-height: 1.5; }
+  .price { padding-top: 20px; display: flex; flex-direction: column; gap: 4px; }
+  .price s { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+  .price-row { display: flex; align-items: center; gap: 8px; }
+  .price-row .chip { align-self: center; }
+  .price-row span { font-size: 16px; font-weight: 700; }
+  .refund-note { font-size: 14px; line-height: 1.5; color: var(--text-secondary); }
+  .refund-note b { color: var(--text-primary); }
+  .price-row strong { font-size: 30px; font-weight: 700; line-height: 1.3; letter-spacing: -0.03em; }
+  .notice { background: var(--bg-cream); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .notice h3 { display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700; line-height: 1.4; }
+  .notice ul { list-style: none; font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+  .notice li::before { content: '• '; }
+
+
+  /* 10 FAQ */
+  .faq { gap: 8px; }
+  .faq dl > div { padding: 20px 0; border-bottom: 1px solid var(--line-default); }
+  .faq dt { display: flex; gap: 8px; font-size: 16px; font-weight: 700; line-height: 1.4; }
+  .faq dt::before { content: 'Q.'; font-weight: 700; color: var(--brand-yellow-deep); }
+  .faq dd { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-top: 8px; }
+
+  /* 11 Footer */
+  footer { padding: 28px 20px 120px; display: flex; flex-direction: column; gap: 4px; }
+  footer strong { font-size: 13px; }
+  footer p { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* Sticky CTA */
+  .sticky {
+    position: fixed; left: 50%; bottom: 0; z-index: 10;
+    width: 100%; max-width: 480px;
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 20px calc(20px + env(safe-area-inset-bottom));
+    background: var(--bg-white); border-top: 1px solid var(--line-default);
+    transform: translate(-50%, 110%); transition: transform .25s ease;
+  }
+  .sticky.show { transform: translate(-50%, 0); }
+  .sticky .p { flex: none; display: flex; flex-direction: column; }
+  .sticky small { font-size: 11px; color: var(--text-secondary); line-height: 1.4; }
+  .sticky strong { font-size: 18px; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+  .sticky .btn { padding: 15px 16px; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 00 Program Info -->
+  <section class="program">
+    <div class="photo thumb"><img src="몽환적인%20소셜%20미디어%20카드%20콜라주.png" alt="흐릿하게 겹쳐진 SNS 광고·콘텐츠 캡처 카드 콜라주"></div>
+    <div class="body">
+      <div class="badges"><span class="badge red">오픈 알림 신청 중</span><span class="badge line">1기 오픈 검토 중</span></div>
+      <p class="crumb">마케팅 스터디<span>/</span>카피 분석</p>
+      <h1>마케터 스크린샷 털이 클럽</h1>
+      <p class="sub"><b>"갤러리에 짱박아둔 스크린샷, 이젠 내 카피로 만들자!"</b>카피 구조 분석부터 내 카피 변형, 나만의 카피 아카이브까지 한 번에!</p>
+      <p class="host-line">👑 대행인A <small>콘텐츠 마케터 · 1년차</small></p>
+      <ol class="gains">
+        <li><b>1</b>쌓아둔 캡처 속 카피 해체하고 내 카피로 바꿔보기</li>
+        <li><b>2</b>다른 마케터의 스크린샷으로 내 카피 직접 써보기</li>
+        <li><b>3</b>폰·컴퓨터 어디서든 쓰는 내 손안의 카피 아카이브</li>
+      </ol>
+    </div>
+
+    <div class="buy">
+      <p class="banner">알림 신청자에게 가장 먼저 오픈 안내</p>
+      <div class="inner">
+        <div>
+          <p class="label">미션 완주 시</p>
+          <p class="now">4,900원</p>
+        </div>
+        <p class="refund">참가비 9,900원 · 미션 완주하면 <b>5,000원 환급</b></p>
+        <a class="btn" href="apply.html" data-cta="top" id="cta-top">오픈 알림 받기</a>
+        <p class="assure">✓ 알림 신청은 무료 · 결제 없음</p>
+      </div>
+      <dl>
+        <dt>오픈 시기</dt><dd>알림 신청이 모이면 1기 오픈 (미정)</dd>
+        <dt>진행 기간</dt><dd>7일</dd>
+        <dt>진행 방식</dt><dd>카카오톡 오픈채팅 (실시간 모임 없음)</dd>
+        <dt>결과물</dt><dd>참가자 카피 아카이브 + 아카이빙 툴 「내 손안의 카피 아카이브」</dd>
+        <dt>예정 인원</dt><dd>10명 내외</dd>
+        <dt>난이도</dt><dd>입문 · 초급 (취준생 참여 가능)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 01 Hero -->
+  <section class="hero bg-hero">
+    <div class="headline">
+      <p class="eyebrow">마케터 특)</p>
+      <p class="hook">좋은 카피 보면</p>
+      <p class="hook"><span class="mark">일단 캡처!
+        <!-- Pencil Underline -->
+        <svg class="underline" viewBox="-6 -6 132 43" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <g stroke-linecap="round" stroke-linejoin="round">
+            <path d="M-2 25.2 L10 24.6 L22 25 L34 24.3 L46 24.5 L58 23.9 L70 24.2 L82 23.6 L94 23.7 L106 23.1 L118 23" stroke="#E9A91F" stroke-width="2.4" stroke-opacity=".55"/>
+            <path d="M-1 24.6 L11 24.9 L23 24.2 L35 24.4 L47 23.8 L59 24.1 L71 23.5 L83 23.6 L95 23 L107 23.2 L117 22.6" stroke="#F6C348" stroke-width="1.6" stroke-opacity=".85"/>
+            <path d="M0 25.6 L12 25.1 L24 25.3 L36 24.7 L48 24.9 L60 24.3 L72 24.4 L84 23.9 L96 24 L108 23.4 L118 23.5" stroke="#D99A12" stroke-width="1" stroke-opacity=".45"/>
+            <path d="M-3 24.9 L9 24.4 L21 24.7 L33 24 L45 24.3 L57 23.7 L69 23.9 L81 23.3 L93 23.5 L105 22.9 L116 22.8" stroke="#F6C348" stroke-width="1.2" stroke-opacity=".6"/>
+            <path d="M6 30.2 L18 29.9 L30 30 L42 29.5 L54 29.6 L66 29.1 L78 29.2 L90 28.7 L102 28.6 L112 28.3" stroke="#E9A91F" stroke-width="2.4" stroke-opacity=".55"/>
+            <path d="M7 29.7 L19 30.1 L31 29.4 L43 29.6 L55 29 L67 29.3 L79 28.7 L91 28.9 L103 28.2 L111 28.4" stroke="#F6C348" stroke-width="1.6" stroke-opacity=".85"/>
+            <path d="M5 30.8 L17 30.3 L29 30.5 L41 29.9 L53 30.1 L65 29.5 L77 29.7 L89 29.1 L101 29.2 L113 28.8" stroke="#D99A12" stroke-width="1" stroke-opacity=".45"/>
+            <path d="M8 30 L20 29.6 L32 29.9 L44 29.2 L56 29.4 L68 28.9 L80 29 L92 28.4 L104 28.5 L112 28" stroke="#F6C348" stroke-width="1.2" stroke-opacity=".6"/>
+          </g>
+        </svg>
+        <!-- Doodle / Camera -->
+        <svg class="doodle camera" viewBox="0 0 44 32" fill="none" aria-hidden="true">
+          <path d="M4 9.5 C4 8 5 7.2 6.5 7.1 L13 6.8 L15 3.6 C15.4 3 16 2.8 16.8 2.8 L23.5 2.6 C24.3 2.6 24.9 3 25.2 3.6 L27 6.6 L34 6.4 C35.6 6.4 36.6 7.4 36.6 9 L36.8 23.5 C36.8 25 35.8 26 34.3 26.1 L6.4 26.6 C5 26.6 4.1 25.7 4.1 24.3 Z" fill="#F6C348" fill-opacity=".45" transform="translate(2 2)"/>
+          <g stroke="#E3A21A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 9.5 C4 8 5 7.2 6.5 7.1 L13 6.8 L15 3.6 C15.4 3 16 2.8 16.8 2.8 L23.5 2.6 C24.3 2.6 24.9 3 25.2 3.6 L27 6.6 L34 6.4 C35.6 6.4 36.6 7.4 36.6 9 L36.8 23.5 C36.8 25 35.8 26 34.3 26.1 L6.4 26.6 C5 26.6 4.1 25.7 4.1 24.3 Z"/>
+            <path d="M26.6 15.6 C26.8 19.3 24 22.2 20.6 22.3 C17 22.4 14.3 19.6 14.3 16.1 C14.3 12.6 17.1 9.8 20.5 9.8 C23.6 9.8 26 11.8 26.5 14.4"/>
+            <path d="M18.2 15.4 C18.6 14 19.7 13.3 21 13.5"/>
+            <path d="M30.4 10.4 L32.8 10.3"/>
+            <path d="M7.6 6.9 L7.8 5.3 L10.8 5.2 L11 6.8"/>
+          </g>
+        </svg>
+        <!-- Doodle / Sparkles -->
+        <svg class="doodle sparkles" viewBox="0 0 48 34" fill="none" aria-hidden="true">
+          <path d="M14 8 C15.2 15.6 16.7 17.8 25 19 C16.7 20.2 15.2 22.4 14 30 C12.8 22.4 11.3 20.2 3 19 C11.3 17.8 12.8 15.6 14 8 Z" fill="#F6C348" fill-opacity=".45" transform="translate(1.5 1.5)"/>
+          <g stroke="#E3A21A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 8 C15.2 15.6 16.7 17.8 25 19 C16.7 20.2 15.2 22.4 14 30 C12.8 22.4 11.3 20.2 3 19 C11.3 17.8 12.8 15.6 14 8 Z"/>
+            <path d="M35 2.5 C35.6 6.3 36.4 7.4 40.5 8 C36.4 8.6 35.6 9.7 35 13.5 C34.4 9.7 33.6 8.6 29.5 8 C33.6 7.4 34.4 6.3 35 2.5 Z"/>
+            <path d="M39 22.5 L39.4 30"/><path d="M35.4 26.4 L43 26"/>
+          </g>
+        </svg>
+      </span></p>
+      <p class="question"><small>그런데…</small><b>다시 꺼내본 적은 있나요?</b></p>
+    </div>
+
+    <div class="photo" style="height:auto; aspect-ratio:1884 / 628"><img src="캡쳐가%20잔뜩%20쌓인%20앨범%20화면%202.png" alt="캡처가 잔뜩 쌓인 휴대폰 사진 앨범 화면"></div>
+    <div class="arrow" aria-hidden="true">↓</div>
+    <p class="hero-sub">한 달 묵힌 스크린샷 3장을 해체해 내 카피로 바꾸고,<br><b>다른 마케터의 스크린샷까지 털어봅시다!</b></p>
+    <div class="photo" style="height:auto; aspect-ratio:1536 / 1024"><img src="스크린샷%20갤러리%20UX%20콜라주.png" alt="스크린샷 앨범에서 3장을 골라 '왜 멈췄지?', '문제공감형?', '호기심 소구!'라고 메모한 화면"></div>
+  </section>
+
+  <!-- 02 Host Problem -->
+  <section class="bg-white">
+    <p class="lead">콘텐츠 마케터로 1년 일하면서<br>카피 분석의 중요성을<br>정말 크게 느꼈어요.</p>
+    <p class="muted">그래서 한 달에 한 번씩<br>피그마에 쫙 펼쳐두고 분석하곤 했지만…</p>
+    <div class="photo" style="height:auto; aspect-ratio:3988 / 1080"><video autoplay muted loop playsinline preload="auto" data-fallback="상페%20움짤.gif" aria-label="피그마에 펼쳐둔 스크린샷을 넘겨보는 영상"><source src="상페%20움짤.mp4" type='video/mp4; codecs="hvc1"'></video></div>
+    <ul class="list-card pain" role="list">
+      <li class="item cross"><i><svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="var(--status-red)" stroke-width="3" stroke-linecap="round"/></svg></i>혼자 하니 흐지부지되고</li>
+      <li class="item cross"><i><svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="var(--status-red)" stroke-width="3" stroke-linecap="round"/></svg></i>보는 카피도 다 거기서 거기고</li>
+      <li class="item cross"><i><svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="var(--status-red)" stroke-width="3" stroke-linecap="round"/></svg></i>필요할 때 다시 찾기도 힘들더라고요… 😭</li>
+    </ul>
+  </section>
+
+  <!-- 03 What It Is -->
+  <section class="what bg-orange center">
+    <p class="kicker">그래서 만들었습니다.</p>
+    <h2 class="name">마케터<br>스크린샷 털이 클럽</h2>
+    <span class="chip light">스크린샷 속 카피만 털어요</span>
+    <p>한 달 동안 캡처한 스크린샷 중 딱 3개를 골라<br>카피를 해체하고, 내 카피로 다시 써봅니다.</p>
+    <div class="photo" style="height:auto; aspect-ratio:1312 / 1414"><img src="카톡방%20예시.png" alt="오픈채팅에서 참가자들이 미션 1, 미션 2 분석을 공유하는 화면 예시"></div>
+  </section>
+
+  <!-- 04 Benefits -->
+  <section class="benefits bg-cream">
+    <h2>무엇을 가져갈 수 있나요?</h2>
+    <article class="benefit">
+      <span class="num">BENEFIT 1</span>
+      <h3>쌓아두기만 했던 스크린샷,<br>내 카피로 소화하기</h3>
+      <p>한 달 동안 캡처해둔 스크린샷, 이번 기회에 싹 훑어보세요. 그중 딱 3개만 골라 왜 눈길이 갔는지, 어떤 카피 구조와 소구가 쓰였는지 직접 해체하고, 내 상품에 맞는 카피로 바꿔봅니다.</p>
+      <div class="photo" style="height:auto; aspect-ratio:980 / 720"><video autoplay muted loop playsinline preload="auto" data-fallback="템플릿%20예.gif" aria-label="분석 템플릿을 작성하는 예시 영상"><source src="템플릿%20예.mp4" type='video/mp4; codecs="hvc1"'></video></div>
+    </article>
+    <article class="benefit">
+      <span class="num">BENEFIT 2</span>
+      <h3>다른 마케터의 시선을,<br>내 카피로 바꿔보기</h3>
+      <p>내 분야의 카피만 보다 보면 비슷한 표현만 반복하게 돼요.</p>
+      <p>다른 참가자가 저장한 스크린샷 하나를 골라 카피 구조와 소구점을 뜯어보고, 내 상품에 적용할 수 있는 새로운 카피로 직접 변형해봅니다.</p>
+      <div class="photo" style="height:auto; aspect-ratio:980 / 720"><video autoplay muted loop playsinline preload="auto" data-fallback="카피%20변형%20워크시트/카피%20변형%20워크시트.gif" aria-label="카피 변형 워크시트를 작성하는 예시 영상"><source src="카피%20변형%20워크시트/카피%20변형%20워크시트.mp4" type='video/mp4; codecs="hvc1"'></video></div>
+      <div class="extra">
+        <span class="extra-label">+ 함께 받는 결과물</span>
+        <p>모든 참가자의 카피 분석은 운영자가 카피 구조·소구점·매체별로 정리해 검색 가능한 참가자 카피 아카이브로 제공합니다. (모임 종료 후 7일 이내)</p>
+      </div>
+    </article>
+    <article class="benefit feature">
+      <span class="num">BENEFIT 3</span>
+      <h3>모임이 끝나도 계속 쌓이는<br>나만의 카피 시스템</h3>
+      <span class="kit">내 손안의 카피 아카이브</span>
+      <p class="lead-in">폰에서도, 컴퓨터에서도<br>언제든 손쉽게 스크린샷 속 카피를 아카이빙하세요.</p>
+
+      <!-- Phone → laptop flow visual -->
+      <div class="devices" role="img" aria-label="폰에서 캡처를 AI 채팅으로 보내면, 컴퓨터의 아카이브 툴에 바로 저장되는 모습">
+        <div class="laptop">
+          <div class="lid"><img src="카피%20아카이브.png" alt=""></div>
+          <div class="base"></div>
+        </div>
+        <div class="phone">
+          <div class="screen">
+            <p class="app-bar">AI 채팅</p>
+            <span class="shot"></span>
+            <p class="bubble me">아카이브에 추가해줘!</p>
+            <p class="bubble ai">✓ 저장 완료<br>#혜택 #시의성</p>
+          </div>
+        </div>
+        <svg class="hop" viewBox="0 0 60 40" fill="none" aria-hidden="true"><path d="M56 34 C50 12 30 4 6 10" stroke="#F6C348" stroke-width="2" stroke-dasharray="3 4" stroke-linecap="round"/><path d="M12 4 L5 10 L13 14" stroke="#F6C348" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="dev-caption">
+        <p><b>📱 폰에서</b>캡처해서 보내면</p>
+        <p><b>💻 컴퓨터에</b>바로 정리·저장</p>
+      </div>
+
+      <p>운영자가 실제로 사용하는 아카이빙 툴 파일 + 사용설명서를 메일로 보내드려요.</p>
+      <ul class="kit-steps">
+        <li><b>✓</b>스크린샷을 넣으면 카피·소구점·태그 정리</li>
+        <li><b>✓</b>폰에서 캡처해 ChatGPT 앱으로 보내면, 내 컴퓨터 아카이브(Codex 연결)에 바로 추가</li>
+        <li><b>✓</b>필요할 때 검색해서 바로 꺼내보기</li>
+      </ul>
+      <p class="fine">* 폰에서 아카이브를 열어보려면 웹 배포가 필요해요. 사용설명서에서 간단히 안내해 드려요.</p>
+    </article>
+  </section>
+
+  <!-- 05 Roadmap -->
+  <section class="bg-white">
+    <h2>7일 동안 이렇게 진행될 예정이에요</h2>
+    <ol class="roadmap">
+      <li>
+        <p class="date">DAY 1</p>
+        <div class="stop"><span class="tag">START</span><h3>모임 시작</h3><p>오픈채팅방에 모여, 분석 템플릿과 진행 방법을 안내해 드려요.</p></div>
+      </li>
+      <li class="mission">
+        <p class="date">~DAY 3</p>
+        <div class="stop"><div class="box"><span class="tag">MISSION 1</span><h3>내 스크린샷 3개, 해체하고 다시 쓰기</h3><p>한 달 동안 캡처한 스크린샷 3개를 골라 템플릿으로 카피를 분석하고, 내 상품에 맞는 카피로 변형해 오픈채팅에 공유해요.</p></div></div>
+      </li>
+      <li class="mission">
+        <p class="date">~DAY 6</p>
+        <div class="stop"><div class="box"><span class="tag">MISSION 2</span><h3>남의 스크린샷으로 내 카피 쓰기</h3><p>다른 참가자가 올린 스크린샷 1개를 골라 똑같이 카피를 분석하고, 내 상품에 맞는 카피로 변형해요.</p></div></div>
+      </li>
+      <li>
+        <p class="date">DAY 7</p>
+        <div class="stop"><span class="tag">END</span><h3>모임 종료 &amp; 환급</h3><p>7일간의 모임을 마무리하고, 미션 2개를 완주한 분께 5,000원을 돌려드려요.</p></div>
+      </li>
+      <li>
+        <p class="date">+7일<small>이내</small></p>
+        <div class="stop"><span class="tag">DELIVERY</span><h3>카피 아카이브 &amp; 툴 전달</h3><p>참가자 카피 아카이브와 아카이빙 툴 「내 손안의 카피 아카이브」를 보내드려요.</p></div>
+      </li>
+    </ol>
+    <p class="note">💡 스크린샷 1개를 분석하고 변형하는 데 20~30분, 4개(내 것 3개 + 남의 것 1개)를 해도 일주일에 2시간 정도면 충분해요.<br>실시간 모임 없이, 마감일 안에 편한 시간에 올려주세요.</p>
+  </section>
+
+  <!-- 06 Host -->
+  <section class="bg-cream">
+    <span class="chip">운영자 소개</span>
+    <div class="profile">
+      <div class="photo"><img src="운영자%20프로필.png" alt="운영자 대행인A 프로필 일러스트"></div>
+      <div><h3>대행인A</h3><p>콘텐츠 마케터 · 1년차</p></div>
+    </div>
+    <p class="bio">콘텐츠 마케터로 1년간 콘텐츠·광고소재를 기획했습니다. 좋은 카피를 모으고, 왜 좋은지 뜯어보는 습관을 중요하게 생각해요.</p>
+    <a class="btn-outline" href="#" target="_blank" rel="noopener" data-link="blog">마케팅 기록 블로그 보기 →</a>
+  </section>
+
+  <!-- 07 For Whom -->
+  <section class="bg-white">
+    <span class="chip light">이런 분께 추천해요</span>
+    <h2>혹시 내 얘기 같다면?</h2>
+    <ul class="list-card check on-white" role="list">
+      <li class="item ok"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#2A2118" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>캡처만 하고 다시는 안 보는 분</li>
+      <li class="item ok"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#2A2118" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>카피 보는 눈을 기르고 싶은 마케터</li>
+      <li class="item ok"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#2A2118" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></i>혼자 보던 카피에서 벗어나고 싶은 분</li>
+    </ul>
+  </section>
+
+  <!-- 08 Info & Price -->
+  <section class="bg-yellow">
+    <h2>오픈 예정 안내</h2>
+    <div class="info-card">
+      <dl>
+        <div><dt>오픈 시기</dt><dd>알림 신청이 모이면 1기 오픈<br>(일정 미정)</dd></div>
+        <div><dt>예정 인원</dt><dd>10명 내외</dd></div>
+        <div><dt>진행 기간</dt><dd>7일</dd></div>
+        <div><dt>진행 방식</dt><dd>카카오톡 오픈채팅<br>(실시간 모임 없음)</dd></div>
+        <div><dt>결과물</dt><dd>참가자 카피 아카이브 +<br>아카이빙 툴 「내 손안의 카피 아카이브」</dd></div>
+        <div><dt>결제</dt><dd>오픈 확정 시 안내</dd></div>
+      </dl>
+      <div class="price">
+        <div class="price-row"><span class="chip">미션 완주 시</span><strong>4,900원</strong></div>
+        <p class="refund-note">참가비 9,900원 · 미션 2개 완주하면 <b>5,000원 환급</b></p>
+      </div>
+    </div>
+    <div class="notice">
+      <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5 L22 20.5 H2 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10 V14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1.1" fill="currentColor"/></svg> 알림 신청 전 확인해주세요</h3>
+      <ul>
+        <li>지금은 결제 없이 오픈 알림만 신청받고 있어요. 오픈이 확정되면 신청하신 분께 가장 먼저 안내해 드려요.</li>
+        <li>일정·가격 등 세부 내용은 오픈 시 달라질 수 있어요.</li>
+        <li>남겨주신 이메일은 1기 오픈 여부·일정 안내에만 사용하고, 안내가 끝나면(최장 3개월) 파기해요.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 09 How To Apply -->
+  <section class="bg-soft">
+    <h2>알림 신청은 이렇게 해요</h2>
+    <ol class="flow">
+      <li><span class="n">1</span><div><h3>오픈 알림 받기</h3><p>이 페이지의 알림 버튼을 눌러요.</p></div></li>
+      <li><span class="n">2</span><div><h3>신청 폼 작성 (1분)</h3><p>이름(닉네임), 이메일, 현재 상태를 적고 개인정보 수집·이용에 동의해요. 참여 의향 설문은 선택이에요.</p></div></li>
+      <li><span class="n">3</span><div><h3>오픈 소식 가장 먼저 받기</h3><p>1기 오픈이 확정되면 남겨주신 이메일로 가장 먼저 알려드려요.</p></div></li>
+    </ol>
+    <a class="btn dark" href="apply.html" data-cta="howto" id="cta-howto">오픈 알림 받기</a>
+  </section>
+
+  <!-- 10 FAQ -->
+  <section class="faq bg-white">
+    <h2>FAQ</h2>
+    <dl>
+      <div><dt>현직 마케터가 아니어도 참여할 수 있나요?</dt><dd>네! 마케터 취준생, 마케팅에 관심 있는 분 누구나 참여할 수 있어요.</dd></div>
+      <div><dt>어떤 캡처를 가져오면 되나요?</dt><dd>카피 때문에 저장한 광고, SNS 콘텐츠, 랜딩페이지, CRM 메시지(푸시·문자·메일) 등 무엇이든 좋아요.</dd></div>
+      <div><dt>언제 열리나요?</dt><dd>지금은 오픈을 검토하고 있어요. 알림 신청이 모이면 1기 일정을 정해, 신청하신 분께 가장 먼저 알려드려요.</dd></div>
+      <div><dt>알림 신청하면 꼭 참여해야 하나요?</dt><dd>아니요. 알림 신청은 무료이고 결제도 없어요. 오픈 소식을 받아보고 참여 여부를 정하시면 돼요.</dd></div>
+      <div><dt>참가비는 얼마인가요?</dt><dd>오픈 예정가는 9,900원이에요. 미션 2개를 완주하면 5,000원을 돌려드려서, 끝까지 참여하면 실 부담은 4,900원이에요.</dd></div>
+      <div><dt>실시간 모임이 있나요?</dt><dd>없어요. 7일 동안 오픈채팅에서 편한 시간에 참여하면 돼요.</dd></div>
+      <div><dt>시간이 얼마나 드나요?</dt><dd>스크린샷 1개를 분석하고 내 카피로 변형하는 데 20~30분 정도예요. 내 스크린샷 3개와 다른 참가자 스크린샷 1개, 총 4개라 일주일에 2시간 정도면 충분해요.</dd></div>
+      <div><dt>남긴 이메일은 어떻게 쓰이나요?</dt><dd>1기 오픈 여부와 일정 안내에만 사용해요. 오픈 여부가 확정되고 안내가 끝나면(최장 3개월) 파기해요.</dd></div>
+      <div><dt>제가 올린 스크린샷과 분석은 어떻게 쓰이나요?</dt><dd>모임이 열리면, 참가자가 올린 스크린샷과 카피 분석은 참가자 카피 아카이브로 재가공되어 해당 기수 참가자에게 공유돼요.</dd></div>
+    </dl>
+  </section>
+
+  <!-- 11 Footer -->
+  <footer class="bg-cream">
+    <strong>마케터 스크린샷 털이 클럽</strong>
+    <p>문의 [이메일 또는 인스타그램]<br>© 2026 마케터 스크린샷 털이 클럽</p>
+  </footer>
+</div>
+
+<!-- Sticky CTA (하단 고정) -->
+<div class="sticky" id="sticky" aria-hidden="true">
+  <div class="p"><small>완주 시 실 부담</small><strong>4,900원</strong></div>
+  <a class="btn" href="apply.html" data-cta="sticky" id="cta-sticky" tabindex="-1">오픈 알림 받기</a>
+</div>
+
+<script>
+  // ---- Funnel: 광고 클릭(UTM) → landing_view → click_alert → apply.html 제출 → thanks.html generate_lead / Lead
+  // UTM 저장, GA4, Meta Pixel 설정은 site.js에 있어요.
+  const { track } = window.Site;
+
+  track('landing_view');
+
+  // HEVC videos don't play everywhere (some Chrome/Firefox/Windows): fall back to the GIF
+  document.querySelectorAll('video[data-fallback]').forEach(video => {
+    const toGif = () => {
+      if (!video.isConnected) return;
+      const img = document.createElement('img');
+      img.src = video.dataset.fallback;
+      img.alt = video.getAttribute('aria-label') || '';
+      video.replaceWith(img);
+    };
+    if (!video.canPlayType('video/mp4; codecs="hvc1"')) return toGif();
+    video.querySelector('source')?.addEventListener('error', toGif);
+    video.play().catch(() => {});
+  });
+
+  // 모든 '오픈 알림 받기' 버튼 → 내부 신청 폼(apply.html). UTM은 sessionStorage로 유지돼요.
+  document.querySelectorAll('[data-cta]').forEach(el => {
+    el.addEventListener('click', () => track('click_alert', { cta_location: el.dataset.cta }));
+  });
+  document.querySelectorAll('[data-link="blog"]').forEach(el =>
+    el.addEventListener('click', () => track('click_blog')));
+
+  // Sticky CTA: show once the top CTA scrolls away, hide while another CTA is on screen
+  const sticky = document.getElementById('sticky');
+  const topCta = document.getElementById('cta-top');
+  const watched = [topCta, ...['cta-howto'].map(id => document.getElementById(id))];
+  const visible = new Set();
+  let passedHero = false;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.target === topCta) passedHero = !e.isIntersecting && e.boundingClientRect.top < 0;
+      if (e.isIntersecting) visible.add(e.target.id); else visible.delete(e.target.id);
+    });
+    const show = passedHero && visible.size === 0;
+    sticky.classList.toggle('show', show);
+    sticky.setAttribute('aria-hidden', String(!show));
+    document.getElementById('cta-sticky').tabIndex = show ? 0 : -1;
+  });
+  watched.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

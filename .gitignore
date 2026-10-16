@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Never commit signup data exported from the Google Sheet
+*.csv
+*.xlsx
+*.xls
+*.tsv
+
+# Local env / tooling
+.env
+node_modules/

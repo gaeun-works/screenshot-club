@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>오픈 알림 신청 · 마케터 스크린샷 털이 클럽</title>
+<meta name="robots" content="noindex">
+<script src="site.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  /* Same tokens as index.html */
+  :root {
+    --brand-yellow: #F6C348;
+    --brand-yellow-soft: #FBE3A0;
+    --brand-yellow-deep: #C98A0A;
+    --bg-cream: #FDF4E8;
+    --bg-white: #FFFFFF;
+    --bg-ink: #2A2118;
+    --text-primary: #2A2118;
+    --text-secondary: #6E6253;
+    --text-inverse: #FFFFFF;
+    --line-default: #EADFCB;
+    --status-red: #CA3D25;
+    --status-red-soft: #FFE9E6;
+    --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    --font-hand: 'Nanum Pen Script', cursive;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); color: var(--text-primary); background: #EFE5D6; letter-spacing: -0.01em; line-height: 1.5; word-break: keep-all; }
+  a { color: inherit; text-decoration: none; }
+  .page { max-width: 480px; min-height: 100vh; margin: 0 auto; background: var(--bg-white); }
+
+  .top { display: flex; align-items: center; gap: 8px; padding: 14px 20px; border-bottom: 1px solid var(--line-default); font-size: 14px; font-weight: 700; }
+  .top a { color: var(--text-secondary); }
+
+  .intro { background: var(--bg-cream); padding: 32px 20px 28px; display: flex; flex-direction: column; gap: 8px; }
+  .intro h1 { font-family: var(--font-hand); font-size: 38px; font-weight: 400; line-height: 1.15; }
+  .intro p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+  .intro .badge { align-self: flex-start; padding: 3px 8px; border-radius: 4px; background: var(--status-red); color: var(--text-inverse); font-size: 12px; font-weight: 700; }
+
+  form { padding: 28px 20px 48px; display: flex; flex-direction: column; gap: 28px; }
+  .field { display: flex; flex-direction: column; gap: 8px; border: 0; }
+  .field > label:not(.consent), .field > legend { font-size: 16px; font-weight: 700; line-height: 1.4; padding: 0; }
+  .field em { font-style: normal; margin-left: 4px; font-size: 12px; font-weight: 700; color: var(--status-red); }
+  .field em.opt { color: var(--text-secondary); }
+  .field .hint { font-size: 13px; color: var(--text-secondary); margin-top: -4px; }
+  input[type=text], input[type=email] {
+    width: 100%; padding: 14px 16px; border-radius: 12px; border: 1.5px solid var(--line-default);
+    font: inherit; font-size: 16px; color: var(--text-primary); background: var(--bg-white);
+  }
+  input[type=text]:focus, input[type=email]:focus { outline: none; border-color: var(--brand-yellow-deep); }
+
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option { display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--line-default); font-size: 15px; line-height: 1.45; cursor: pointer; }
+  .option input { flex: none; width: 18px; height: 18px; accent-color: var(--bg-ink); }
+  .option:has(input:checked) { border-color: var(--bg-ink); background: var(--bg-cream); font-weight: 700; }
+
+  .field.invalid input[type=text], .field.invalid input[type=email], .field.invalid .option, .field.invalid .consent { border-color: var(--status-red); }
+  .err { font-size: 13px; font-weight: 700; color: var(--status-red); min-height: 0; }
+  .err:empty { display: none; }
+
+  .privacy { background: var(--bg-cream); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .privacy h2 { font-size: 15px; font-weight: 700; }
+  .privacy dl { display: grid; grid-template-columns: 64px 1fr; row-gap: 6px; column-gap: 10px; font-size: 13px; line-height: 1.5; }
+  .privacy dt { color: var(--text-secondary); }
+  .privacy p { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+  .consent { display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--line-default); background: var(--bg-white); font-size: 15px; font-weight: 700; cursor: pointer; }
+  .consent input { flex: none; width: 20px; height: 20px; accent-color: var(--bg-ink); }
+
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .form-error { padding: 14px 16px; border-radius: 12px; background: var(--status-red-soft); color: var(--status-red); font-size: 14px; font-weight: 700; line-height: 1.5; }
+  .form-error:empty { display: none; }
+
+  .btn {
+    display: flex; justify-content: center; align-items: center; width: 100%; padding: 18px 24px; border: 0; border-radius: 14px;
+    background: var(--brand-yellow); color: var(--text-primary); font: inherit; font-size: 17px; font-weight: 700; cursor: pointer;
+  }
+  .btn:disabled { opacity: 0.6; cursor: progress; }
+  .fine { margin-top: -16px; text-align: center; font-size: 13px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top"><a href="index.html">← 상세페이지</a></div>
+
+  <section class="intro">
+    <span class="badge">오픈 알림 신청</span>
+    <h1>1기 오픈 소식, 가장 먼저 받아보세요</h1>
+    <p>1분이면 끝나요. 오픈이 확정되면 남겨주신 이메일로 가장 먼저 알려드릴게요.</p>
+  </section>
+
+  <form id="alert-form" novalidate>
+    <div class="field" data-field="name">
+      <label for="name">이름 또는 닉네임<em>필수</em></label>
+      <input id="name" name="name" type="text" maxlength="40" autocomplete="nickname" aria-describedby="name-err">
+      <p class="err" id="name-err" role="alert"></p>
+    </div>
+
+    <div class="field" data-field="email">
+      <label for="email">이메일<em>필수</em></label>
+      <p class="hint">오픈 안내를 받을 이메일이에요.</p>
+      <input id="email" name="email" type="email" inputmode="email" maxlength="100" autocomplete="email" aria-describedby="email-err">
+      <p class="err" id="email-err" role="alert"></p>
+    </div>
+
+    <fieldset class="field" data-field="status" aria-describedby="status-err">
+      <legend>현재 상태<em>필수</em></legend>
+      <div class="options">
+        <label class="option"><input type="radio" name="status" value="현직 마케터">현직 마케터</label>
+        <label class="option"><input type="radio" name="status" value="마케터 취업 준비 중">마케터 취업 준비 중</label>
+        <label class="option"><input type="radio" name="status" value="다른 직무에서 일하고 있음">다른 직무에서 일하고 있음</label>
+        <label class="option"><input type="radio" name="status" value="대학생">대학생</label>
+        <label class="option"><input type="radio" name="status" value="프리랜서 / 1인 사업자">프리랜서 / 1인 사업자</label>
+        <label class="option"><input type="radio" name="status" value="기타">기타</label>
+      </div>
+      <p class="err" id="status-err" role="alert"></p>
+    </fieldset>
+
+    <fieldset class="field" data-field="intent">
+      <legend>실제로 열린다면 참여 의향이 어느 정도인가요?<em class="opt">선택</em></legend>
+      <div class="options">
+        <label class="option"><input type="radio" name="intent" value="꼭 참여해보고 싶어요">꼭 참여해보고 싶어요</label>
+        <label class="option"><input type="radio" name="intent" value="일정이 맞으면 참여하고 싶어요">일정이 맞으면 참여하고 싶어요</label>
+        <label class="option"><input type="radio" name="intent" value="조금 더 내용을 보고 결정하고 싶어요">조금 더 내용을 보고 결정하고 싶어요</label>
+        <label class="option"><input type="radio" name="intent" value="아직 잘 모르겠어요">아직 잘 모르겠어요</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="field" data-field="benefits">
+      <legend>가장 기대되는 것은 무엇인가요?<em class="opt">선택 · 복수 선택</em></legend>
+      <div class="options">
+        <label class="option"><input type="checkbox" name="benefits" value="쌓아둔 레퍼런스를 제대로 분석해보는 것">쌓아둔 레퍼런스를 제대로 분석해보는 것</label>
+        <label class="option"><input type="checkbox" name="benefits" value="다른 마케터가 저장한 레퍼런스를 보는 것">다른 마케터가 저장한 레퍼런스를 보는 것</label>
+        <label class="option"><input type="checkbox" name="benefits" value="다른 사람의 레퍼런스를 내 카피로 변형해보는 것">다른 사람의 레퍼런스를 내 카피로 변형해보는 것</label>
+        <label class="option"><input type="checkbox" name="benefits" value="참가자들의 레퍼런스를 모은 공유 아카이브">참가자들의 레퍼런스를 모은 공유 아카이브</label>
+        <label class="option"><input type="checkbox" name="benefits" value="AI 레퍼런스 아카이빙 툴">AI 레퍼런스 아카이빙 툴</label>
+        <label class="option"><input type="checkbox" name="benefits" value="마케터들과 함께 레퍼런스를 공유하는 경험">마케터들과 함께 레퍼런스를 공유하는 경험</label>
+      </div>
+    </fieldset>
+
+    <div class="field" data-field="consent">
+      <div class="privacy">
+        <h2>개인정보 수집·이용 안내</h2>
+        <dl>
+          <dt>수집 항목</dt><dd>이름/닉네임, 이메일, 현재 상태</dd>
+          <dt>이용 목적</dt><dd>마케터 스크린샷 털이 클럽 1기 오픈 여부 및 일정 안내</dd>
+          <dt>보유 기간</dt><dd>1기 오픈 여부 확정 및 안내 완료 시까지 (최장 3개월)</dd>
+        </dl>
+        <p>동의를 거부할 수 있으나, 동의하지 않을 경우 오픈 안내를 받을 수 없습니다.</p>
+      </div>
+      <label class="consent"><input id="consent" type="checkbox" name="consent" value="Y" aria-describedby="consent-err">개인정보 수집·이용에 동의합니다 (필수)</label>
+      <p class="err" id="consent-err" role="alert"></p>
+    </div>
+
+    <!-- Spam honeypot: real users never see or fill this -->
+    <div class="hp" aria-hidden="true">
+      <label for="website">웹사이트</label>
+      <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <p class="form-error" id="form-error" role="alert"></p>
+    <button class="btn" type="submit" id="submit-btn">오픈 알림 신청하기</button>
+    <p class="fine">알림 신청만으로 결제가 발생하지 않아요.</p>
+  </form>
+</div>
+
+<script>
+  const { config, getUtm, getLanding, ssSet } = window.Site;
+  const form = document.getElementById('alert-form');
+  const btn = document.getElementById('submit-btn');
+  const formError = document.getElementById('form-error');
+  const nameEl = document.getElementById('name');
+  const emailEl = document.getElementById('email');
+  const consentEl = document.getElementById('consent');
+  const honeypotEl = document.getElementById('website');
+  const BTN_LABEL = btn.textContent;
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  let sending = false;
+
+  function setError(field, message) {
+    const box = form.querySelector(`[data-field="${field}"]`);
+    box.classList.toggle('invalid', Boolean(message));
+    const err = document.getElementById(field + '-err');
+    if (err) err.textContent = message || '';
+  }
+
+  function validate() {
+    const name = nameEl.value.trim();
+    const email = emailEl.value.trim();
+    const status = form.querySelector('input[name="status"]:checked');
+    const consent = consentEl.checked;
+    const problems = [];
+
+    setError('name', name ? '' : '이름 또는 닉네임을 입력해 주세요.');
+    if (!name) problems.push(nameEl);
+
+    const emailMsg = !email ? '이메일을 입력해 주세요.' : !EMAIL_RE.test(email) ? '이메일 형식을 확인해 주세요. (예: name@example.com)' : '';
+    setError('email', emailMsg);
+    if (emailMsg) problems.push(emailEl);
+
+    setError('status', status ? '' : '현재 상태를 선택해 주세요.');
+    if (!status) problems.push(form.querySelector('input[name="status"]'));
+
+    setError('consent', consent ? '' : '오픈 안내를 받으려면 개인정보 수집·이용에 동의해 주세요.');
+    if (!consent) problems.push(consentEl);
+
+    return problems;
+  }
+
+  // Clear a field's error as soon as the user fixes it
+  form.addEventListener('input', e => {
+    const box = e.target.closest('[data-field]');
+    if (box && box.classList.contains('invalid')) validate();
+  });
+
+  function setSending(on) {
+    sending = on;
+    btn.disabled = on;
+    btn.textContent = on ? '알림 신청 중…' : BTN_LABEL;
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (sending) return;
+    formError.textContent = '';
+
+    const problems = validate();
+    if (problems.length) { problems[0].focus(); return; }
+
+    if (!config.APPS_SCRIPT_WEB_APP_URL) {
+      formError.textContent = '아직 신청 접수 설정이 완료되지 않았어요. 잠시 후 다시 시도해 주세요.';
+      return;
+    }
+
+    const utm = getUtm();
+    const landing = getLanding();
+    // Sent in the POST body only — never in the URL, never logged.
+    const payload = {
+      name: nameEl.value.trim(),
+      email: emailEl.value.trim(),
+      status: form.querySelector('input[name="status"]:checked').value,
+      privacy_consent: 'Y',
+      intent: form.querySelector('input[name="intent"]:checked')?.value || '',
+      benefits: [...form.querySelectorAll('input[name="benefits"]:checked')].map(i => i.value),
+      utm_source: utm.utm_source || '',
+      utm_medium: utm.utm_medium || '',
+      utm_campaign: utm.utm_campaign || '',
+      utm_content: utm.utm_content || '',
+      utm_term: utm.utm_term || '',
+      landing_url: landing.landing_url,
+      referrer: landing.referrer,
+      submitted_at: new Date().toISOString(),
+      website: honeypotEl.value, // honeypot
+    };
+
+    setSending(true);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    try {
+      // text/plain keeps this a "simple" request, so Apps Script doesn't need a CORS preflight
+      const res = await fetch(config.APPS_SCRIPT_WEB_APP_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+      const result = await res.json();
+      if (!result.ok) throw new Error(result.error || 'save_failed');
+
+      // thanks.html fires generate_lead / Lead only when this flag is present
+      ssSet('lead_pending', '1');
+      location.replace('thanks.html');
+    } catch (err) {
+      formError.textContent = '신청이 저장되지 않았어요. 인터넷 연결을 확인하고 다시 시도해 주세요. 계속 안 되면 잠시 후 다시 신청해 주세요.';
+      setSending(false);
+    } finally {
+      clearTimeout(timer);
+    }
+  });
+</script>
+</body>
+</html>
