@@ -115,6 +115,8 @@
   /* 00 Program Info */
   .program { background: var(--bg-white); padding: 0 0 32px; gap: 0; }
   .program .thumb { height: auto; aspect-ratio: 16 / 10; border-radius: 0; border-width: 0 0 1.5px; position: relative; }
+  .program .thumb { background: var(--bg-white); }
+  .program .thumb > img:not(.overlay) { opacity: 0.6; }
   .program .thumb .overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: auto; height: 92%; object-fit: contain; }
   .program .body { padding: 24px 20px 0; display: flex; flex-direction: column; gap: 12px; }
   .badges { display: flex; align-items: center; gap: 6px; }
