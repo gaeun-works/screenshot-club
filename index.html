@@ -114,7 +114,8 @@
 
   /* 00 Program Info */
   .program { background: var(--bg-white); padding: 0 0 32px; gap: 0; }
-  .program .thumb { height: auto; aspect-ratio: 16 / 10; border-radius: 0; border-width: 0 0 1.5px; }
+  .program .thumb { height: auto; aspect-ratio: 16 / 10; border-radius: 0; border-width: 0 0 1.5px; position: relative; }
+  .program .thumb .overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: auto; height: 92%; object-fit: contain; }
   .program .body { padding: 24px 20px 0; display: flex; flex-direction: column; gap: 12px; }
   .badges { display: flex; align-items: center; gap: 6px; }
   .badge { display: inline-flex; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: 0.02em; }
@@ -313,7 +314,7 @@
 
   <!-- 00 Program Info -->
   <section class="program">
-    <div class="photo thumb"><img src="몽환적인%20소셜%20미디어%20카드%20콜라주.png" alt="흐릿하게 겹쳐진 SNS 광고·콘텐츠 캡처 카드 콜라주"></div>
+    <div class="photo thumb"><img src="몽환적인%20소셜%20미디어%20카드%20콜라주.png" alt=""><img class="overlay" src="휴대폰에서%20쏟아지는%20사진%20카드-web.png" alt="휴대폰을 흔들자 캡처한 사진 카드가 쏟아져 나와 놀란 사람 일러스트"></div>
     <div class="body">
       <div class="badges"><span class="badge red">오픈 알림 신청 중</span><span class="badge line">1기 오픈 검토 중</span></div>
       <p class="crumb">마케팅 스터디<span>/</span>카피 분석</p>
