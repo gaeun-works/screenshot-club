@@ -134,9 +134,11 @@
   .buy { margin: 24px 20px 0; border: 1px solid var(--line-default); border-radius: 16px; overflow: hidden; }
   .buy .banner { background: var(--status-red); color: var(--text-inverse); text-align: center; font-size: 14px; font-weight: 700; padding: 9px; }
   .buy .inner { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .buy .fee { border-top: 1px solid var(--line-default); padding: 16px 20px; display: flex; flex-direction: column; gap: 6px; }
   .buy .label { font-size: 13px; color: var(--text-secondary); }
-  .buy .now { font-size: 30px; font-weight: 700; line-height: 1.2; letter-spacing: -0.03em; }
-  .buy .refund { margin-top: -4px; padding: 10px 12px; border-radius: 10px; background: var(--bg-cream); font-size: 14px; line-height: 1.5; color: var(--text-secondary); }
+  .buy .now { font-size: 15px; font-weight: 600; line-height: 1.3; }
+  .buy .now strong { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .buy .refund { margin-top: 2px; padding: 10px 12px; border-radius: 10px; background: var(--bg-cream); font-size: 14px; line-height: 1.5; color: var(--text-secondary); }
   .buy .refund b { color: var(--text-primary); }
   .buy .assure { text-align: center; font-size: 13px; font-weight: 700; color: var(--brand-yellow-deep); }
   .buy dl { border-top: 1px solid var(--line-default); padding: 16px 20px 18px; display: grid; grid-template-columns: 76px 1fr; row-gap: 10px; column-gap: 12px; font-size: 14px; line-height: 1.5; }
@@ -328,13 +330,13 @@
     <div class="buy">
       <p class="banner">알림 신청자에게 가장 먼저 오픈 안내</p>
       <div class="inner">
-        <div>
-          <p class="label">미션 완주 시</p>
-          <p class="now">4,900원</p>
-        </div>
-        <p class="refund">참가비 9,900원 · 미션 완주하면 <b>5,000원 환급</b></p>
         <a class="btn" href="apply.html" data-cta="top" id="cta-top">오픈 알림 받기</a>
         <p class="assure">✓ 알림 신청은 무료 · 결제 없음</p>
+      </div>
+      <div class="fee">
+        <p class="label">1기 예정 참가비</p>
+        <p class="now">미션 완주 시 <strong>4,900원</strong></p>
+        <p class="refund">참가비 9,900원 · 미션 완주하면 <b>5,000원 환급</b></p>
       </div>
       <dl>
         <dt>오픈 시기</dt><dd>알림 신청이 모이면 1기 오픈 (미정)</dd>
